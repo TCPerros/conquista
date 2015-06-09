@@ -12,7 +12,7 @@ public class Jugador {
 		this.humano = humano;
 	}
 	
-	private void borrarMovimientos(int tamano){
+	public void borrarMovimientos(int tamano){
 		movimientos = new int[tamano][tamano];
 	}
 
