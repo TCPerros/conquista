@@ -34,4 +34,8 @@ public class Tablero {
 	public boolean validarMovimiento(String cOrigen, String cDestino, char tipo, char idj){
 		return false;
 	}
+	
+	public Casilla[][] getCasillas(){
+		return casillas;
+	}
 }

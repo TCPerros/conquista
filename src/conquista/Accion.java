@@ -2,8 +2,11 @@ package conquista;
 
 public class Accion {
 
-	public void Ataque (String cOrigen, String cDestino, Jugador jugador, Tablero tablero){
+	public boolean Ataque (String cOrigen, String cDestino, Jugador jugador, Tablero tablero){
+		if (cOrigen == null || cDestino == null) return false;
+		if (!tablero.validarMovimiento(cOrigen, cDestino, 'a', jugador.getId())) return false;
 		
+		return true;
 	}
 	
 	public void Defensa (String cOrigen, String cDestino, Jugador jugador, Tablero tablero){
