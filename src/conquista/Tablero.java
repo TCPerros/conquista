@@ -19,6 +19,7 @@ public class Tablero {
 	}
 	
 	public int[][] conversorCasilla(String casilla){
+		bora bora
 		return null;
 	}
 	
