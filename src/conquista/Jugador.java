@@ -24,7 +24,7 @@ public class Jugador {
 		return movimientos;
 	}
 	
-	public void setMovimiento (int valor, int[][] posicion){
+	public void setMovimiento (int valor, int[] posicion){
 		
 	}
 	
