@@ -15,10 +15,10 @@ public class Accion {
 	}
 	
 	public boolean retirada (){
-		return false;
+		return true;
 	}
 	
 	public boolean terminarTurno(){
-		return false;
+		return true;
 	}
 }
