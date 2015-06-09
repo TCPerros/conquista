@@ -18,7 +18,7 @@ public class Tablero {
 		return ' ';
 	}
 	
-	public int[][] conversorCasilla(String casilla){
+	public static int[][] conversorCasilla(String casilla){
 		return null;
 	}
 	
