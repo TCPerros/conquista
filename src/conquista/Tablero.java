@@ -34,7 +34,20 @@ public class Tablero {
 	 * @return true si la acción es válida y false si no lo es
 	 */
 	public boolean validarMovimiento(String cOrigen, String cDestino, char tipo, char idj){
-		return false;
+		if (cOrigen == null) return false;
+		if (tipo != 'a' && tipo != 'd') return false;
+		if (tipo == 'a' && cDestino == null) return false;
+		int[] pOrigen, pDestino;
+		pOrigen = this.conversorCasilla(cOrigen);
+		pDestino = this.conversorCasilla(cDestino);
+		if (this.getCasillas()[pOrigen[0]][pOrigen[1]].getEquipo() != idj) return false;
+		if (tipo == 'a' && this.getCasillas()[pDestino[0]][pDestino[1]].getEquipo() == idj) return false;
+		if (tipo == 'd' && cDestino != null && this.getCasillas()[pDestino[0]][pDestino[1]].getEquipo() != idj) return false;
+		if (cDestino != null){
+			int restax = pDestino[0]-pOrigen[0], restay = pDestino[1]-pOrigen[1];
+			if (Math.abs(restax)>1 || Math.abs(restay)>1) return false;
+		}
+		return true;
 	}
 	
 	public Casilla[][] getCasillas(){

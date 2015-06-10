@@ -2,6 +2,15 @@ package conquista;
 
 public class Accion {
 
+	/**
+	 * Calcula un movimiento de ataque
+	 * 
+	 * @param cOrigen Casilla origen del ataque perteneciente al jugador activo
+	 * @param cDestino Casilla destino del ataque perteneciente a un jugador rival
+	 * @param jugador Jugador que realiza la acción
+	 * @param tablero Tablero del juego activo
+	 * @return true si el ataque ha tenido éxito, falso en caso contrario
+	 */
 	public boolean Ataque (String cOrigen, String cDestino, Jugador jugador, Tablero tablero){
 		if (cOrigen == null || cDestino == null) return false;
 		if (!tablero.validarMovimiento(cOrigen, cDestino, 'a', jugador.getId())) return false;
