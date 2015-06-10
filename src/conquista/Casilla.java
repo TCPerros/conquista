@@ -6,7 +6,8 @@ public class Casilla {
 	private int resistencia;
 	private int recursos;
 	private boolean uso;
-	private int valorTirada; //Quizá no se use
+	private int maximo;
+	private int valorTirada; //Quizï¿½ no se use
 	
 	public Casilla(char equipo, int resistencia, int recursos) {
 		super();
@@ -14,6 +15,7 @@ public class Casilla {
 		this.resistencia = resistencia;
 		this.recursos = recursos;
 		this.uso = false;
+		this.maximo = resistencia*2;
 	}
 
 	public char getEquipo() {
@@ -42,6 +44,10 @@ public class Casilla {
 
 	public int getRecursos() {
 		return recursos;
+	}
+	
+	public int getMaximo(){
+		return maximo;
 	}
 	
 }
