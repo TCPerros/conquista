@@ -7,9 +7,9 @@ public class Accion {
 	 * 
 	 * @param cOrigen Casilla origen del ataque perteneciente al jugador activo
 	 * @param cDestino Casilla destino del ataque perteneciente a un jugador rival
-	 * @param jugador Jugador que realiza la acción
+	 * @param jugador Jugador que realiza la acciï¿½n
 	 * @param tablero Tablero del juego activo
-	 * @return true si el ataque ha tenido éxito, falso en caso contrario
+	 * @return true si el ataque ha tenido ï¿½xito, falso en caso contrario
 	 */
 	public boolean Ataque (String cOrigen, String cDestino, Jugador jugador, Tablero tablero){
 		if (cOrigen == null || cDestino == null) return false;
@@ -20,7 +20,7 @@ public class Accion {
 		int dados = tablero.getCasillas()[pOrigen[0]][pOrigen[1]].getRecursos();
 		int resultado=0;
 		for (int i = 0; i<dados; i++) resultado += new Dado().getResultado();
-		jugador.setMovimiento(resultado*-1, pDestino);
+		jugador.setMovimiento(jugador.getMovimientos()[pDestino[0]][pDestino[1]]+(resultado*-1), pDestino);
 		return true;
 	}
 	
