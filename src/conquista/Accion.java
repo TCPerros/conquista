@@ -7,9 +7,9 @@ public class Accion {
 	 * 
 	 * @param cOrigen Casilla origen del ataque perteneciente al jugador activo
 	 * @param cDestino Casilla destino del ataque perteneciente a un jugador rival
-	 * @param jugador Jugador que realiza la acci�n
+	 * @param jugador Jugador que realiza la acción
 	 * @param tablero Tablero del juego activo
-	 * @return true si el ataque ha tenido �xito, falso en caso contrario
+	 * @return true si el ataque ha tenido éxito, falso en caso contrario
 	 */
 	public boolean Ataque (String cOrigen, String cDestino, Jugador jugador, Tablero tablero){
 		if (cOrigen == null || cDestino == null) return false;

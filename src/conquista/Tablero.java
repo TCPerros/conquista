@@ -25,13 +25,13 @@ public class Tablero {
 	}
 	
 	/**
-	 * Comprueba si la acci�n de movimiento es v�lida.
+	 * Comprueba si la acción de movimiento es válida.
 	 * 
-	 * @param cOrigen Casilla origen de la acci�n
-	 * @param cDestino Casilla destino de la acci�n (Puede ser nula para defensa)
-	 * @param tipo Tipo de acci�n a ejecutar 'a' para ataque y 'd' para defensa
+	 * @param cOrigen Casilla origen de la acción
+	 * @param cDestino Casilla destino de la acción (Puede ser nula para defensa)
+	 * @param tipo Tipo de acción a ejecutar 'a' para ataque y 'd' para defensa
 	 * @param idj ID del jugador
-	 * @return true si la acci�n es v�lida y false si no lo es
+	 * @return true si la acción es válida y false si no lo es
 	 */
 	public boolean validarMovimiento(String cOrigen, String cDestino, char tipo, char idj){
 		if (cOrigen == null) return false;
@@ -52,5 +52,93 @@ public class Tablero {
 	
 	public Casilla[][] getCasillas(){
 		return casillas;
+	}
+	
+	public void dibujarTablero(){
+		/*for (int i=9552; i<=9580;i++) System.out.println(i+": "+(char)i);
+		System.out.println((char)9484+' '+(char)9488+' '+(char)9492+' '+(char)9496+' '+(char)9500+' '+(char)9508+' '+
+				(char)9516+' '+(char)9524+' '+(char)9532);
+		System.out.println("╔═══════╦═══════╗");
+		System.out.println("║100    ║50*    ║");
+		System.out.println("║   V   ║       ║");
+		System.out.println("║      3║      1║");
+		System.out.println("╠═══════╬═══════╣");
+		System.out.println("║23     ║100    ║");
+		System.out.println("║       ║   A   ║");
+		System.out.println("║      2║      3║");
+		System.out.println("╚═══════╩═══════╝");*/
+		int longx=casillas.length, longy=casillas[0].length;
+		String linea="  ";
+		
+		//Pinta la línea de números
+		for (int j=0;j<longx;j++) {
+			linea += "    ";
+			linea += j+1;
+			linea += "   ";
+		}
+		System.out.println(linea);
+		
+		for(int i=0;i<longy;i++){
+			
+			//Pinta la parte de arriba del marco
+			linea = "  ";
+			if (i == 0) linea += "╔";
+			//else 
+			else linea += "╠";
+			for (int j=0;j<longx;j++) {
+				linea += "═══════";
+				if (j == longx-1){
+					if (i == 0 ) linea += "╗";
+					else linea += "╣";
+				}
+				else if (i == 0) linea += "╦";
+				else linea += "╬";
+			}
+			System.out.println(linea);
+			linea="  ";
+			
+			//Pinta la línea de resistencia
+			for (int j=0;j<longx;j++){
+				linea += "║";
+				linea += casillas[j][i].getResistencia();
+				if (casillas[j][i].getResistencia() == casillas[j][i].getMaximo()) linea += "*";
+				for (int k = (linea.length()-2)%8; k < 8 ; k++) linea += " ";
+			}
+			linea += "║";
+			System.out.println(linea);
+			linea="";
+			
+			//Pinta la línea de equipo
+			linea += (char)(65+i);
+			linea += " ";
+			for (int j=0;j<longx;j++){
+				linea += "║   ";
+				linea += casillas[j][i].getEquipo();
+				linea += "   ";
+			}
+			linea += "║";
+			System.out.println(linea);
+			linea="  ";
+			
+			//Pinta la línea de recursos
+			for (int j=0;j<longx;j++){
+				linea += "║      ";
+				linea += casillas[j][i].getRecursos();
+			}
+			linea += "║";
+			System.out.println(linea);
+			linea = "  ";
+			
+			//Pinta la línea inferior del marco
+			if (i == longy-1){
+				linea += "╚";
+				for (int j=0;j<longx;j++) {
+					linea += "═══════";
+					if (j != longx-1) linea += "╩";
+				}
+				linea += "╝";
+				System.out.println(linea);
+			}
+		}
 	}
 }
