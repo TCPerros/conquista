@@ -1,5 +1,7 @@
 package conquista;
 
+import java.util.ArrayList;
+
 public class Tablero {
 
 	private Casilla[][] casillas;
@@ -33,9 +35,23 @@ public class Tablero {
 	}
 	
 	public int[] conversorCasilla(String casilla){
-		
-		
-		return null;
+		ArrayList letras = new ArrayList<Character>(), numeros = new ArrayList<Character>();
+		boolean cambio = false;
+		for (int i = 0;!cambio && i < casilla.length();i++){
+			if (Character.isAlphabetic(casilla.charAt(i))){
+				if (numeros.size() == 0) letras.add(casilla.charAt(i));
+				else return null;
+			} else if (Character.isDigit(casilla.charAt(i))) numeros.add(casilla.charAt(i));
+		}
+		if (letras.size() == 0 || numeros.size() == 0) return null;
+		int x = 0, y = 0;
+		for (int i = 1, j = numeros.size()-1; j >= 0; i*=10, j--){
+			x += Integer.parseInt(Character.toString((char)numeros.get(j)))*i;
+		}
+		for (int i = 0; i < letras.size(); i++){
+			y += Character.toUpperCase(((char)letras.get(i)))-65+((i==0)?0:1);
+		}
+		return new int []{x,y};
 	}
 	
 	/**
