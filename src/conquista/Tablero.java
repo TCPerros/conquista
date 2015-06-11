@@ -11,11 +11,25 @@ public class Tablero {
 	}
 	
 	private void generarTablero(){
-		
+		int resistencia;
+		for (int i = 0; i < 10; i++){
+			for (int j = 0; j < 10; j++){
+				while ((resistencia = (int)(Math.random()*100)+1) < 20);
+				this.getCasillas()[i][j] = new Casilla(' ',resistencia,(int)(Math.random()*3)+1);
+			}
+		}
+		this.getCasillas()[0][0] = new Casilla ('V', 150, 3);
+		this.getCasillas()[this.getCasillas().length-1][this.getCasillas()[0].length-1] = new Casilla ('R', 150, 3);
 	}
 	
 	public char calcularVictoria(){
-		return ' ';
+		char equipo = this.getCasillas()[0][0].getEquipo();
+		for (int i = 0; i < this.getCasillas().length; i++){
+			for (int j = 0; j < this.getCasillas()[i].length; j++){
+				if (equipo != this.getCasillas()[i][j].getEquipo()) return ' ';
+			}
+		}
+		return equipo;
 	}
 	
 	public int[] conversorCasilla(String casilla){
