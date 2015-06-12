@@ -1,5 +1,8 @@
 package conquista;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Tablero {
 
 	private Casilla[][] casillas;
@@ -19,9 +22,39 @@ public class Tablero {
 	}
 	
 	public int[] conversorCasilla(String casilla){
-		
-		
-		return null;
+		Pattern pat = Pattern.compile("[a-zA-Z]+[1-9]+");
+	    Matcher mat = pat.matcher(casilla);
+	     if(mat.matches()) {
+	    	String casillaMayus = casilla.toUpperCase();
+	    	int tamanoTablero = casillas.length;
+	    	char cadenaCasilla[] = casillaMayus.toCharArray();
+	    	String parteNumerica = new String();
+	    	String parteAlfabetica =  new String();
+	    	int contadorAlfabetica = 0;
+	    	
+	    	for (int i = 0; i < cadenaCasilla.length; i++) {
+	
+	    		if (Character.isDigit(cadenaCasilla[i])){
+					parteNumerica =  parteNumerica+String.valueOf(cadenaCasilla[i]);
+				}
+	    		else{
+	    			parteAlfabetica = parteAlfabetica+String.valueOf(cadenaCasilla[i]);
+	    			contadorAlfabetica++;
+	    		}
+			}
+	    	//validar si el dato introducido esta en el tablero
+	    	if(Integer.parseInt(parteNumerica)>tamanoTablero){
+	    		return null;
+	    	}
+	    	
+	    	int posicion[] = new int[2];
+	    	posicion[0] = (contadorAlfabetica-1)+(parteAlfabetica.charAt(contadorAlfabetica-1)-64)-1;
+	    	posicion[1] = Integer.parseInt(parteNumerica)-1;
+	    	
+	    	return posicion;
+	     }else {
+	    	return null;
+	     }
 	}
 	
 	/**
