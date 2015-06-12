@@ -22,7 +22,7 @@ public class Tablero {
 	}
 	
 	public int[] conversorCasilla(String casilla){
-		Pattern pat = Pattern.compile("[a-zA-Z]+[1-9]+");
+		Pattern pat = Pattern.compile("[a-zA-Z]+[1-9][0-9]*");
 	    Matcher mat = pat.matcher(casilla);
 	     if(mat.matches()) {
 	    	String casillaMayus = casilla.toUpperCase();
