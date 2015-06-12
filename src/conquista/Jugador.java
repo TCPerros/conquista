@@ -25,7 +25,7 @@ public class Jugador {
 	}
 	
 	public void setMovimiento (int valor, int[] posicion){
-		
+		movimientos[posicion[0]][posicion[1]] = valor;
 	}
 	
 }
