@@ -24,12 +24,18 @@ public class Accion {
 		return true;
 	}
 	
-	public void Defensa (String cOrigen, String cDestino, Jugador jugador, Tablero tablero){
-		
-	}
-	
-	public void Defensa (String cOrigen, Jugador jugador, Tablero tablero){
-		
+	public boolean Defensa (String cOrigen, String cDestino, Jugador jugador, Tablero tablero){
+		if (cOrigen == null) return false;
+		if (!tablero.validarMovimiento(cOrigen, cDestino, 'd', jugador.getId())) return false;
+		int[] pOrigen, pDestino;
+		cDestino = (cDestino == null)? cOrigen : cDestino;
+		pOrigen = tablero.conversorCasilla(cOrigen);
+		pDestino = tablero.conversorCasilla(cDestino);
+		int dados = tablero.getCasillas()[pOrigen[0]][pOrigen[1]].getRecursos();
+		int resultado=0;
+		for (int i = 0; i<dados; i++) resultado += new Dado().getResultado();
+		jugador.setMovimiento(jugador.getMovimientos()[pDestino[0]][pDestino[1]]+(resultado), pDestino);
+		return true; 
 	}
 	
 	public boolean retirada (){
