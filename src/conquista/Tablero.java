@@ -26,7 +26,13 @@ public class Tablero {
 	}
 	
 	public char calcularVictoria(){
-		return ' ';
+		char equipo = this.getCasillas()[0][0].getEquipo();
+		for (int i = 0; i < this.getCasillas().length; i++){
+			for (int j = 0; j < this.getCasillas()[i].length; j++){
+				if (equipo != this.getCasillas()[i][j].getEquipo()) return ' ';
+			}
+		}
+		return equipo;
 	}
 	
 	public int[] conversorCasilla(String casilla){
