@@ -14,7 +14,15 @@ public class Tablero {
 	}
 	
 	private void generarTablero(){
-		
+		int resistencia;
+		for (int i = 0; i < 10; i++){
+			for (int j = 0; j < 10; j++){
+				while ((resistencia = (int)(Math.random()*100)+1) < 20);
+				this.getCasillas()[i][j] = new Casilla(' ',resistencia,(int)(Math.random()*3)+1);
+			}
+		}
+		this.getCasillas()[0][0] = new Casilla ('V', 150, 3);
+		this.getCasillas()[this.getCasillas().length-1][this.getCasillas()[0].length-1] = new Casilla ('R', 150, 3);
 	}
 	
 	public char calcularVictoria(){
@@ -22,7 +30,7 @@ public class Tablero {
 	}
 	
 	public int[] conversorCasilla(String casilla){
-		Pattern pat = Pattern.compile("[a-zA-Z]+[1-9]+");
+		Pattern pat = Pattern.compile("[a-zA-Z]+[1-9][0-9]*");
 	    Matcher mat = pat.matcher(casilla);
 	     if(mat.matches()) {
 	    	String casillaMayus = casilla.toUpperCase();
