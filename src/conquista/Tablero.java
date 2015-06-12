@@ -51,7 +51,8 @@ public class Tablero {
 		for (int i = 0; i < letras.size(); i++){
 			y += Character.toUpperCase(((char)letras.get(i)))-65+((i==0)?0:1);
 		}
-		return new int []{x,y};
+		if (x > this.getCasillas().length || y+1 > this.getCasillas()[0].length) return null;
+		return new int []{x-1,y};
 	}
 	
 	/**
