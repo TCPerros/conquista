@@ -19,7 +19,7 @@ public class Controlador {
 		return 0;
 	}
 	
-	private boolean resolucion(){
+	private boolean resolucion(Jugador j1, Jugador J2, Tablero t){
 		
 		return false;
 	}
